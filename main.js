@@ -1,3 +1,5 @@
+let poes = new Promise((resolve, reject))
+
 fetch("https://randomuser.me/api/?results=100")
   .then((res) => res.json())
   .then((data) => {
@@ -19,9 +21,9 @@ let person = people.find((person) => {
   if (person) {
       resolve(person);
   } else {
-    reject({
+      reject({
         msg: "Person not found",
     });
   }
 
-  });
+});
