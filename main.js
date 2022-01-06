@@ -1,4 +1,4 @@
-let poes = new Promise((resolve, reject))
+let people = new Promise((resolve, reject) => {
 
 fetch("https://randomuser.me/api/?results=100")
   .then((res) => res.json())
@@ -6,7 +6,7 @@ fetch("https://randomuser.me/api/?results=100")
     console.log(data);
 
 let people = data.results;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 let person = people.find((person) => {
     return (
       person.name.first == "Johnathan" ||
@@ -17,13 +17,26 @@ let person = people.find((person) => {
       person.name.first == "Mary"
     );
   });
-
+///////////////////////////////////////////////////////////////////////////////////////////////
   if (person) {
-      resolve(person);
+      resolve(person.name);
   } else {
       reject({
         msg: "Person not found",
     });
   }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+})
+})
+///////////////////////////////////////////////////////////////////
+people.then((resd) => {
+    console.log(resd)
+    document.querySelector("#otp").innerHTML = `
+    
+    <h1> ${resd.first} ${resd.last} </h1>
+    `
+}).catch((err) => {
+  console.log(err)
+  alert(err.msg)
+  location.reload()
 });
